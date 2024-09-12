@@ -298,8 +298,7 @@ classdef GeneralRelvar < matlab.mixin.Copyable
             end
             
             if returnKey
-                varargout{length(specs)+1} = dj.struct.fromFields(dj.struct.proj(ret, ...
-                    self.primaryKey{:}));
+                varargout{length(specs)+1} = dj.struct.proj(s, self.primaryKey{:});
             end
         end
         

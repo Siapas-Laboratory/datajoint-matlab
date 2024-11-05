@@ -163,6 +163,8 @@ classdef Connection < handle
             % dj.Connection/query - query(connection, queryStr, varargin) issue an
             % SQL query and return the result if any.
             % The same connection is re-used by all DataJoint objects.
+            
+            queryStr
             if ~self.isConnected
                 self.connId=mym(-1, 'open', self.host, self.user, self.password, self.use_tls);
 

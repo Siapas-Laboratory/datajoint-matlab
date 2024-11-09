@@ -164,7 +164,7 @@ classdef Connection < handle
             % SQL query and return the result if any.
             % The same connection is re-used by all DataJoint objects.
             
-            queryStr
+            % queryStr
             if ~self.isConnected
                 self.connId=mym(-1, 'open', self.host, self.user, self.password, self.use_tls);
 

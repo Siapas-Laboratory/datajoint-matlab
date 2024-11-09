@@ -1,10 +1,11 @@
 function setup(varargin)
     p = inputParser;
     addOptional(p, 'force', false);
-    addOptional(p, 'prompt', true);
+    addOptional(p, 'prompt', false);
     parse(p, varargin{:});
     force = p.Results.force;
     prompt = p.Results.prompt;
+    prompt = 0;
     persistent INVOKED
     if ~isempty(INVOKED) && ~force
         return

@@ -33,7 +33,7 @@ classdef Relvar < dj.internal.GeneralRelvar & dj.internal.Table
         end
         
         
-        function del(self)
+        function success = del(self)
             % DEL - remove all tuples of the relation from its table
             % and, recursively, all matching tuples in dependent tables.
             %
@@ -49,6 +49,8 @@ classdef Relvar < dj.internal.GeneralRelvar & dj.internal.Table
             %                                   Cells
             % See also delQuick, drop
             
+            success=false;
+
             function cleanup(self)
                 if self.schema.conn.inTransaction
                     fprintf '\n ** delete rolled back due to an interrupt\n'
@@ -140,6 +142,7 @@ classdef Relvar < dj.internal.GeneralRelvar & dj.internal.Table
                         end
                         self.schema.conn.commitTransaction
                         disp committed
+                        success=true;
                     catch err
                         fprintf '\n ** delete rolled back due to an error\n'
                         self.schema.conn.cancelTransaction

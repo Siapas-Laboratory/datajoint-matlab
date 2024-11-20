@@ -351,6 +351,7 @@ classdef Table < handle
             % "newDefinition"
             [sql, ~, ~] = dj.internal.Declare.compileAttribute(...
                 dj.internal.Declare.parseAttrDef(newDefinition), []);
+            %fprintf(1, 'CHANGE COLUMN `%s` %s\n', attrName, sql)
             self.alter(sprintf('CHANGE COLUMN `%s` %s', attrName, sql));
         end
         
